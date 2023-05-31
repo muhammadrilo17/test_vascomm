@@ -40,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
   void moveToMainPage(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(
       context,
-      Pages.home,
+      Pages.main,
       (route) => false,
     );
   }

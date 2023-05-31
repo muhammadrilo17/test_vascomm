@@ -10,10 +10,11 @@ import 'package:test_vascomm/core/utils/res/app_size.dart';
 import 'package:test_vascomm/core/utils/res/app_string.dart';
 import 'package:test_vascomm/core/utils/res/text_style.dart';
 import 'package:test_vascomm/core/utils/utils.dart';
-import 'package:test_vascomm/ui/pages.dart';
 import 'package:test_vascomm/ui/pages/main/cubit/nav_drawer_cubit.dart';
 import 'package:test_vascomm/ui/pages/main/cubit/navigation_drawer_cubit.dart';
 import 'package:test_vascomm/ui/pages/main/home/home_page.dart';
+import 'package:test_vascomm/ui/pages/main/profile/profile_page.dart';
+import 'package:test_vascomm/ui/pages/main/settings/settings_page.dart';
 import 'package:test_vascomm/ui/widgets/app_bar_custom.dart';
 import 'package:test_vascomm/ui/widgets/button_filled_custom.dart';
 
@@ -138,11 +139,9 @@ class MainPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(left: AppMargin.size_20),
                   child: ButtonFilledCustom(
-                    onTap: () => Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      Pages.login,
-                      (route) => false,
-                    ),
+                    onTap: () {
+                      _navDrawerCubit.logout(context);
+                    },
                     showIcon: false,
                     borderRadius: const BorderRadius.all(
                       Radius.circular(AppRadius.size_24),
@@ -223,17 +222,9 @@ class MainPage extends StatelessWidget {
 
   Widget renderContent(NavigationDrawerState state) {
     if (state.status == NavigationDrawerStatus.settings) {
-      return Container(
-        child: Center(
-          child: Text('Settings'),
-        ),
-      );
+      return const SettingsPage();
     } else if (state.status == NavigationDrawerStatus.profile) {
-      return Container(
-        child: Center(
-          child: Text('Profile'),
-        ),
-      );
+      return const ProfilePage();
     }
     return HomePage();
   }

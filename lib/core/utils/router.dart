@@ -3,6 +3,7 @@ import 'package:test_vascomm/ui/pages.dart';
 import 'package:test_vascomm/ui/pages/auth/login/login_page.dart';
 import 'package:test_vascomm/ui/pages/auth/register/register_page.dart';
 import 'package:test_vascomm/ui/pages/main/home/home_page.dart';
+import 'package:test_vascomm/ui/pages/main/main_page.dart';
 
 class Router {
   late RouteObserver<PageRoute> routeObserver;
@@ -19,6 +20,8 @@ class Router {
         return _buildRoute(settings, HomePage());
       case Pages.register:
         return _buildRoute(settings, RegisterPage());
+      case Pages.main:
+        return _buildRoute(settings, MainPage());
     }
     return null;
   }
